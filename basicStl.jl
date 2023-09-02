@@ -5,6 +5,9 @@ using StatsPlots
 using Forecast
 using Dates
 
+# Trying out STL Predictions with a dataset that I know follows seasonal trends, ie: searches for the month of August on Google
+# Using my experience in this, I will proceed to decomp the IMDB Data since it too features spikes in ratings in near-regular intervals of timings
+
 aug_data = DataFrame(CSV.File("augustSearches.csv"))
 savefig(plot(aug_data.Week, aug_data.august), "augustPlot.png")
 firstDate = Dates.Date(2018,09,02)

@@ -1,6 +1,8 @@
 using DataFrames
 using CSV
 using Plots
+using StatsPlots
+using Forecast
 
 csv_data = DataFrame(CSV.File("finalData.csv"))
 # csv_data[!, :startYearInt] = [parse(Int,x) for x in csv_data[!, :startYear]] 
@@ -35,3 +37,9 @@ savefig(pVariance, "plotVariance.png")
 # plot(csv_data["startYear"], csv_data["averageRating"])
 
 # Note to self: It is possible to directly Read from a zip file!
+stl_movies = stl(yearsRatingAvg, length(yearsRatingAvg); )
+println(stl_movies)
+pStl = plot(stl_movies, label=["Years", "Variance"])
+savefig(pStl, "plotStl.png")
+
+"""STL Object with robust=false: stl(Yn, np=123; nl=123, ns=1231, nt=185, ni=2, no=0, spm=false, qsmp=17)"""

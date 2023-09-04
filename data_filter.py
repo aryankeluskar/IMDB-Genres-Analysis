@@ -8,21 +8,20 @@ usefulCols = ['tconst', 'startYear', 'genres']
 tsv_data1 = pd.read_csv('data.tsv', sep='\t')
 tsv_data2 = pd.read_csv('data2.tsv', sep='\t', usecols=usefulCols)
 
-tsv_data1['startYear']=tsv_data2['startYear']
-tsv_data1['genres']=tsv_data2['genres']
+tsv_data1['startYear'] = tsv_data2['startYear']
+tsv_data1['genres'] = tsv_data2['genres']
 
 print(tsv_data1)
 del tsv_data2
 
-query = tsv_data1[tsv_data1['numVotes'] > 10000]
+query = tsv_data1[tsv_data1['numVotes'] > 500]
 df = pd.DataFrame.from_records(query)
-df=df.drop(labels="numVotes", axis=1)
-df=df.drop(labels="tconst", axis=1)
-df=df[df.startYear != """\\N"""]
-df=df[df.genres != """\\N"""]
+df = df.drop(labels="tconst", axis=1)
+df = df[df.startYear != """\\N"""]
+df = df[df.genres != """\\N"""]
 # df=df.drop(labels="\\\N", axis=0)
 
-#print(df)
+# print(df)
 
 combined_csv_filename = 'finalData.csv'
 df.to_csv(combined_csv_filename, index=False)

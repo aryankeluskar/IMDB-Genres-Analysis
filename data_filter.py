@@ -1,6 +1,8 @@
 import pandas as pd
 import csv
 import time
+from prophet import Prophet
+
 start_time = time.time()
 
 usefulCols = ['tconst', 'startYear', 'genres']
@@ -14,7 +16,7 @@ tsv_data1['genres'] = tsv_data2['genres']
 print(tsv_data1)
 del tsv_data2
 
-query = tsv_data1[tsv_data1['numVotes'] > 500]
+query = tsv_data1[tsv_data1['numVotes'] > 100]
 df = pd.DataFrame.from_records(query)
 df = df.drop(labels="tconst", axis=1)
 df = df[df.startYear != """\\N"""]
@@ -25,6 +27,17 @@ df = df[df.genres != """\\N"""]
 
 combined_csv_filename = 'finalData.csv'
 df.to_csv(combined_csv_filename, index=False)
+
+# m = Prophet()
+# m.fit(df)
+
+# future = m.make_future_dataframe(periods=365)
+# future.tail()
+
+# forecast = m.predict(future)
+# forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
+# fig1 = m.plot(forecast)
+
 
 print((time.time()-start_time))
 

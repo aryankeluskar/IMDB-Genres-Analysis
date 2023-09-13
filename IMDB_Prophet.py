@@ -58,7 +58,7 @@ for genreIterative in range(10):
     plt.xlabel("Year")
     plt.ylabel("Average Rating")
     plt.legend()
-    plt.savefig(f"plot{genresList[genreIterative]}.png")
+    # plt.savefig(f"plot{genresList[genreIterative]}.png")
 
 
 df = pd.DataFrame({

@@ -1,3 +1,7 @@
+"""
+Trying to convert this code to Julia
+"""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

@@ -2,6 +2,12 @@
 Trying to convert this code to Julia
 """
 
+# import pip
+# import sys
+# package = 'prophet'
+# if not package in sys.modules:
+#     pip.main(['install', package])
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -25,6 +31,7 @@ yearsRatingAvg = np.zeros(2023 - startYearData)
 noOfYears = np.zeros(2023 - startYearData)
 genresRatingAvg = np.zeros((10, 2023 - startYearData))
 genresCount = np.zeros((10, 2023 - startYearData))
+
 
 # Loop through the DataFrame
 for index, row in csv_data.iterrows():
